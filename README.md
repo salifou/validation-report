@@ -1,2 +1,2 @@
-This project describes the validation report, an abstract representation
-of a report entry and various formatting (e.g. JSON, XML, Text etc.)
+This project describes the validation report, an abstract representation of a
+report entry and various utilities for transforming and manipulating the report.
