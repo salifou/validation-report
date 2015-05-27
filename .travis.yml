@@ -1,0 +1,16 @@
+language: java
+jdk:
+- oraclejdk8
+- oraclejdk7
+- openjdk7
+deploy:
+  provider: releases
+  api_key:
+    secure: LcAa/xythlmS6I3AXc9+XUhqOe36OLQtcxGL/dHlE4GBQ3MN+nmUduSEdzetpeMX473UsPcfx9lJu27KbrkUw1gYZi5Y1CoZ6L4A5lGHXVHvpY5feH/HZXROp4zqJEGgP3cJRohwkcaomAsiyYaPIaSU/Ju1B4byEciFF4ATJvVv5rA4Yc6uIa5OnN2De4diaSwI7PuKAVbWlT0fyj0EJGB5oJN4XUGAyHpTClEFNi/yO3QHQaCA/4zpbKvQVIy6wVyf1k65GofIBzlG4Z6yfWIjaavB6eGglXEQdLET3OBdfw5DFKC2IWi4xOnqrEL9S1W4Pz4IJv11uu8DBtNdr+F8zI8lPizDhT6vUwnbxPKXpGZr/MdvAl0Ia0JCZNVGM+HlgOIjIHcfnLta3fZ/yYo7ox0xu0effJj+gPSytNFgB90t7GvUvlyYrO3vEyf0BhYNoUbzL+XvXIYRcxBOv6AQg3GUTqa6l3iVFVH+zDXM1yrUORBf3CHVOaGODPlbkQZwEedJpennLxPPY1vkedxdopU8xsyGkw2XvvqtSiggIxz6cpTgEk4hkDsoFYL3Moe0EH/UnssvtmJXUTOlKFx45HwBXggtzLXoDaWh65v1t06E8UHn2qIfVpZocsWvIH8Vvxs1Kamo/EjabjEvP5t6/y7/txeUTOspOIQz89A=
+  file: 'target/validation-report.jar'
+  skip_cleanup: true
+  on:
+    repo: salifou/validation-report
+    tag: true
+    all_branches: true
+    condition: "$TRAVIS_TAG =~ ^v[1-9][0-9]*[.](0|[1-9][0-9]*)[.](0|[1-9][0-9]*)$"
