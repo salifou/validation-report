@@ -3,6 +3,7 @@ package gov.nist.validation.report.impl;
 import gov.nist.validation.report.Entry;
 import gov.nist.validation.report.Report;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,12 +22,28 @@ public class ReportImpl implements Report {
 
     @Override
     public Collection<Entry> getEntriesByCategory(String category) {
-        return null; //TODO
+        if( category == null )
+            throw new IllegalArgumentException("The category cannot be null");
+
+        List<Entry> result = new ArrayList<>();
+        if( entries != null )
+            for(Entry e: entries)
+                if( category.equals(e.getCategory()) )
+                    result.add(e);
+        return result;
     }
 
     @Override
     public Collection<Entry> getEntriesByClassification(String classification) {
-        return null; //TODO
+        if( classification == null )
+            throw new IllegalArgumentException("The classification cannot be null");
+
+        List<Entry> result = new ArrayList<>();
+        if( entries != null )
+            for(Entry e: entries)
+                if( classification.equals(e.getClassification()) )
+                    result.add(e);
+        return result;
     }
 
     @Override
