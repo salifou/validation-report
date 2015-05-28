@@ -9,8 +9,8 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <description>
-        This project describes the validation report, an abstract representation
-        of a report entry and various formatting (e.g. JSON, XML, Text etc.)
+        This project describes a validation report API, an abstract representation of a
+        report entry and various utilities for transforming and manipulating the report.
     </description>
 
     <developers>
