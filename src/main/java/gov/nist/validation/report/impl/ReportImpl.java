@@ -52,7 +52,7 @@ public class ReportImpl implements Report {
     }
 
     @Override
-    public String toJson() {
+    /*public String toJson() {
         if( entries == null || entries.size() == 0)
             return "{}";
 
@@ -66,5 +66,10 @@ public class ReportImpl implements Report {
 
         sb.append("]}");
         return sb.toString();
+    }*/
+    public String toJson() {
+        try {
+            return Util.mapper.writeValueAsString(this);
+        } catch (Exception e) { e.printStackTrace(); return null; }
     }
 }

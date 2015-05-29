@@ -16,7 +16,7 @@ public class EntryImpl implements Entry {
     private int column = -1;
     private String path;
     private String description;
-    private String details = "";
+    private String details;
     private String category;
     private String classification;
     private EntryMetaData metaData;
@@ -33,7 +33,6 @@ public class EntryImpl implements Entry {
         this.column = column;
         this.path = path;
         this.description = description;
-        this.details = "";
         this.category = category;
         this.classification = classification;
     }
@@ -105,19 +104,24 @@ public class EntryImpl implements Entry {
     /**
      * @return The JSON serialization of the entry
      */
-    public String toJson() {
+    /*public String toJson() {
         return "{" +
                   "\"Entry\":{" +
                     "\"line\":"+ line +"," +
                     "\"column\":"+ column +"," +
                     "\"path\":\""+ path +"\"," +
                     "\"description\":\""+ escapeJson(description) +"\"," +
-                    ( details.isEmpty() ? "" : "\"details\":\""+ escapeJson(details) +"\"," ) +
+                    ( details  == null ? "" : "\"details\":\""+ escapeJson(details) +"\"," ) +
                     ( metaData == null ? "" : metaData.toJson() +"," ) +
                     "\"category\":\""+ category +"\"," +
                     "\"classification\":\""+ classification +"\"" +
                   "}" +
                 "}";
+    }*/
+    public String toJson() {
+        try {
+            return Util.mapper.writeValueAsString(this);
+        } catch (Exception e) { e.printStackTrace(); return null; }
     }
 
     public String toString() {

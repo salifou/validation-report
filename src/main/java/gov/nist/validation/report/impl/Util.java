@@ -1,6 +1,11 @@
 package gov.nist.validation.report.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Util {
+
+
+    public static final ObjectMapper mapper = new ObjectMapper();
 
     /**
      * Returns a new string with json special characters escaped
