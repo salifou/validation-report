@@ -1,9 +1,11 @@
 package gov.nist.validation.report.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.nist.validation.report.Entry;
-import gov.nist.validation.report.EntryMetaData;
 
-import static gov.nist.validation.report.impl.Util.escapeJson;
+import java.util.Map;
+
+import static gov.nist.validation.report.impl.Util.mapper;
 
 /**
  * An immutable implementation of a report entry
@@ -19,7 +21,7 @@ public class EntryImpl implements Entry {
     private String details;
     private String category;
     private String classification;
-    private EntryMetaData metaData;
+    private Map<String, Object> metaData;
 
     public EntryImpl(
             int line,
@@ -45,7 +47,7 @@ public class EntryImpl implements Entry {
             String details,
             String category,
             String classification,
-            EntryMetaData metaData
+            Map<String, Object> metaData
     ) {
         this(line, column, path, description, category, classification);
         this.details  = details;
@@ -83,7 +85,9 @@ public class EntryImpl implements Entry {
     /**
      * @return The details
      */
-    public String getDetails() { return details; }
+    public String getDetails() {
+        return details;
+    }
 
     /**
      * @return The category of the entry
@@ -99,29 +103,18 @@ public class EntryImpl implements Entry {
         return classification;
     }
 
-    public EntryMetaData getMetaData() { return metaData; }
+    /**
+     * @return The metadata associated to the entry
+     */
+    public Map<String, Object> getMetaData() {
+        return metaData;
+    }
 
     /**
      * @return The JSON serialization of the entry
      */
-    /*public String toJson() {
-        return "{" +
-                  "\"Entry\":{" +
-                    "\"line\":"+ line +"," +
-                    "\"column\":"+ column +"," +
-                    "\"path\":\""+ path +"\"," +
-                    "\"description\":\""+ escapeJson(description) +"\"," +
-                    ( details  == null ? "" : "\"details\":\""+ escapeJson(details) +"\"," ) +
-                    ( metaData == null ? "" : metaData.toJson() +"," ) +
-                    "\"category\":\""+ category +"\"," +
-                    "\"classification\":\""+ classification +"\"" +
-                  "}" +
-                "}";
-    }*/
-    public String toJson() {
-        try {
-            return Util.mapper.writeValueAsString(this);
-        } catch (Exception e) { e.printStackTrace(); return null; }
+    public String toJson() throws JsonProcessingException {
+        return mapper.writeValueAsString(this);
     }
 
     public String toString() {

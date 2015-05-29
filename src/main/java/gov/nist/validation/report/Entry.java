@@ -1,5 +1,7 @@
 package gov.nist.validation.report;
 
+import java.util.Map;
+
 /**
  * This interface describes a report entry
  *
@@ -42,12 +44,14 @@ public interface Entry {
     public String getClassification();
 
     /**
-     * @return The entry meta data
+     * @return The metadata associated to the entry
      */
-    public EntryMetaData getMetaData();
+    public Map<String, Object> getMetaData();
 
     /**
      * @return The JSON serialization of the entry
+     *
+     * @throws java.lang.Exception if a problem occurred during the JSON serialization
      */
-    public String toJson();
+    public String toJson() throws Exception;
 }

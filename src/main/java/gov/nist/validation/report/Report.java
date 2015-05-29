@@ -26,7 +26,9 @@ public interface Report {
 
     /**
      * @return The JSON serialization of the report
+     *
+     * @throws java.lang.Exception if a problem occurred during the JSON serialization
      */
-    public String toJson();
+    public String toJson() throws Exception;
 
 }
