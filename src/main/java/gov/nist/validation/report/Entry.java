@@ -1,5 +1,6 @@
 package gov.nist.validation.report;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,11 +30,6 @@ public interface Entry {
     public String getDescription();
 
     /**
-     * @return The details
-     */
-    public String getDetails();
-
-    /**
      * @return The category of the entry
      */
     public String getCategory();
@@ -42,6 +38,11 @@ public interface Entry {
      * @return The classification of the entry
      */
     public String getClassification();
+
+    /**
+     * @return The stackTrace
+     */
+    public List<Trace> getStackTrace();
 
     /**
      * @return The metadata associated to the entry

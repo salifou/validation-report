@@ -2,7 +2,9 @@ package gov.nist.validation.report.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.nist.validation.report.Entry;
+import gov.nist.validation.report.Trace;
 
+import java.util.List;
 import java.util.Map;
 
 import static gov.nist.validation.report.impl.Util.mapper;
@@ -18,9 +20,9 @@ public class EntryImpl implements Entry {
     private int column = -1;
     private String path;
     private String description;
-    private String details;
     private String category;
     private String classification;
+    private List<Trace> stackTrace;
     private Map<String, Object> metaData;
 
     public EntryImpl(
@@ -44,14 +46,14 @@ public class EntryImpl implements Entry {
             int column,
             String path,
             String description,
-            String details,
             String category,
             String classification,
+            List<Trace> stackTrace,
             Map<String, Object> metaData
     ) {
         this(line, column, path, description, category, classification);
-        this.details  = details;
-        this.metaData = metaData;
+        this.stackTrace  = stackTrace;
+        this.metaData    = metaData;
     }
 
     /**
@@ -83,13 +85,6 @@ public class EntryImpl implements Entry {
     }
 
     /**
-     * @return The details
-     */
-    public String getDetails() {
-        return details;
-    }
-
-    /**
      * @return The category of the entry
      */
     public String getCategory() {
@@ -101,6 +96,13 @@ public class EntryImpl implements Entry {
      */
     public String getClassification() {
         return classification;
+    }
+
+    /**
+     * @return The stackTrace
+     */
+    public List<Trace>  getStackTrace() {
+        return stackTrace;
     }
 
     /**
@@ -118,7 +120,12 @@ public class EntryImpl implements Entry {
     }
 
     public String toString() {
-        return String.format("[%s][%d,%d] %s # %s", classification, line,
-                column, category, description);
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("[%s][%d,%d] %s # %s", classification, line,
+                column, category, description));
+        if( stackTrace != null )
+            for(Trace t: stackTrace)
+                sb.append("\n").append(t.toString());
+        return sb.toString();
     }
 }

@@ -52,24 +52,18 @@ public class ReportImpl implements Report {
     }
 
     @Override
-    /*public String toJson() {
-        if( entries == null || entries.size() == 0)
-            return "{}";
-
-        StringBuilder sb = new StringBuilder("{\"Entries\":[");
-        sb.append( entries.get(0).toJson() );
-
-        for( int i = 1; i < entries.size(); i++) {
-            sb.append(",");
-            sb.append(entries.get(i).toJson());
-        }
-
-        sb.append("]}");
-        return sb.toString();
-    }*/
     public String toJson() {
         try {
             return Util.mapper.writeValueAsString(this);
         } catch (Exception e) { e.printStackTrace(); return null; }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if( entries != null)
+            for(Entry e: entries)
+                sb.append(e.toString()).append("\n");
+        return sb.toString();
     }
 }
