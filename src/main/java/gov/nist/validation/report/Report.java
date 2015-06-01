@@ -20,7 +20,7 @@ public interface Report {
     public Collection<Entry> getEntriesByClassification(String classification);
 
     /**
-     * @return The list of entries if this report
+     * @return The list of entries
      */
     public Collection<Entry> getEntries();
 

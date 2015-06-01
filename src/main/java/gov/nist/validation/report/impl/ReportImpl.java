@@ -1,5 +1,6 @@
 package gov.nist.validation.report.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.nist.validation.report.Entry;
 import gov.nist.validation.report.Report;
 
@@ -52,10 +53,8 @@ public class ReportImpl implements Report {
     }
 
     @Override
-    public String toJson() {
-        try {
-            return Util.mapper.writeValueAsString(this);
-        } catch (Exception e) { e.printStackTrace(); return null; }
+    public String toJson() throws JsonProcessingException {
+        return Util.mapper.writeValueAsString(this);
     }
 
     @Override
