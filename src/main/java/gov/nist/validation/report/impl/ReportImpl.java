@@ -57,8 +57,11 @@ public class ReportImpl implements Report {
         return Util.mapper.writeValueAsString(this);
     }
 
+    /**
+     * @return The text representation of the report
+     */
     @Override
-    public String toString() {
+    public String toText() {
         StringBuilder sb = new StringBuilder();
         if( entries != null)
             for(Entry e: entries)

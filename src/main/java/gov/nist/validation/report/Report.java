@@ -31,4 +31,8 @@ public interface Report {
      */
     public String toJson() throws Exception;
 
+    /**
+     * @return The text representation of the report
+     */
+    public String toText();
 }

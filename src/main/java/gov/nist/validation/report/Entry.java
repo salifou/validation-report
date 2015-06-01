@@ -55,4 +55,9 @@ public interface Entry {
      * @throws java.lang.Exception if a problem occurred during the JSON serialization
      */
     public String toJson() throws Exception;
+
+    /**
+     * @return The text representation of the entry
+     */
+    public String toText();
 }

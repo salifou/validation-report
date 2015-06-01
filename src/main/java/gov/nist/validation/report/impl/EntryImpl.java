@@ -119,7 +119,10 @@ public class EntryImpl implements Entry {
         return mapper.writeValueAsString(this);
     }
 
-    public String toString() {
+    /**
+     * @return The text representation of the entry
+     */
+    public String toText() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("[%s][%d,%d] %s # %s", classification, line,
                 column, category, description));
