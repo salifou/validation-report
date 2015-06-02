@@ -131,4 +131,38 @@ public class EntryImpl implements Entry {
                 sb.append("\n").append(t.toString());
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EntryImpl)) return false;
+
+        EntryImpl entry = (EntryImpl) o;
+
+        if (column != entry.column) return false;
+        if (line != entry.line) return false;
+        if (!category.equals(entry.category)) return false;
+        if (!classification.equals(entry.classification)) return false;
+        if (!description.equals(entry.description)) return false;
+        if (metaData != null ? !metaData.equals(entry.metaData) : entry.metaData != null)
+            return false;
+        if (!path.equals(entry.path)) return false;
+        if (stackTrace != null ? !stackTrace.equals(entry.stackTrace) : entry.stackTrace != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = line;
+        result = 31 * result + column;
+        result = 31 * result + path.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + category.hashCode();
+        result = 31 * result + classification.hashCode();
+        result = 31 * result + (stackTrace != null ? stackTrace.hashCode() : 0);
+        result = 31 * result + (metaData != null ? metaData.hashCode() : 0);
+        return result;
+    }
 }
