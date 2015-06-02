@@ -1,6 +1,7 @@
 package gov.nist.validation.report;
 
-import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This interface describes a validation report
@@ -12,17 +13,17 @@ public interface Report {
     /**
      * @return The list of entries with this category
      */
-    public Collection<Entry> getEntriesByCategory(String category);
+    public List<Entry> getEntriesByCategory(String category);
 
     /**
      * @return The list of entries with this classification
      */
-    public Collection<Entry> getEntriesByClassification(String classification);
+    public List<Entry> getEntriesByClassification(String classification);
 
     /**
      * @return The list of entries
      */
-    public Collection<Entry> getEntries();
+    public Map<String, List<Entry>> getEntries();
 
     /**
      * @return The JSON serialization of the report
