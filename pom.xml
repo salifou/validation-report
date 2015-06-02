@@ -6,7 +6,7 @@
 
     <groupId>gov.nist</groupId>
     <artifactId>validation-report</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <description>
         This project describes a validation report API, an abstract representation of a
