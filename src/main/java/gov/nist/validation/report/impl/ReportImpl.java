@@ -65,7 +65,7 @@ public class ReportImpl implements Report {
         StringBuilder sb = new StringBuilder();
         if( entries != null)
             for(Entry e: entries)
-                sb.append(e.toString()).append("\n");
+                sb.append(e.toText()).append("\n");
         return sb.toString();
     }
 }
