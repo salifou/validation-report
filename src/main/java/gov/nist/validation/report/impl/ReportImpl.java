@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import gov.nist.validation.report.Entry;
 import gov.nist.validation.report.Report;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,36 +18,6 @@ public class ReportImpl implements Report {
 
     public ReportImpl(Map<String, List<Entry>> entries) {
         this.entries = entries;
-    }
-
-    @Override
-    public List<Entry> getEntriesByCategory(String category) {
-        if( category == null )
-            throw new IllegalArgumentException("The category cannot be null");
-
-        List<Entry> result = new ArrayList<>();
-        if( entries != null )
-            for(List<Entry> l: entries.values())
-                if( l != null )
-                    for( Entry e: l )
-                        if( category.equals(e.getCategory()) )
-                            result.add(e);
-        return result;
-    }
-
-    @Override
-    public List<Entry> getEntriesByClassification(String classification) {
-        if( classification == null )
-            throw new IllegalArgumentException("The classification cannot be null");
-
-        List<Entry> result = new ArrayList<>();
-        if( entries != null )
-            for( List<Entry> l: entries.values() )
-                if( l != null )
-                    for( Entry e: l )
-                        if( classification.equals(e.getClassification()) )
-                            result.add(e);
-        return result;
     }
 
     @Override

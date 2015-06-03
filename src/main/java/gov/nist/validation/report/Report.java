@@ -11,16 +11,6 @@ import java.util.Map;
 public interface Report {
 
     /**
-     * @return The list of entries with this category
-     */
-    public List<Entry> getEntriesByCategory(String category);
-
-    /**
-     * @return The list of entries with this classification
-     */
-    public List<Entry> getEntriesByClassification(String classification);
-
-    /**
      * @return The list of entries
      */
     public Map<String, List<Entry>> getEntries();
